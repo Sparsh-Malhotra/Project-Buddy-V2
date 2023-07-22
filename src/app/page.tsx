@@ -60,7 +60,7 @@ export default function Home() {
               />
               <Input
                 placeholder="Tech Stack"
-                className="border-0 border-b-2 rounded-none"
+                className="border-0 border-b-2 rounded-none px-0 focus-visible:ring-0"
               />
               <Button className="px-16" asChild>
                 <Link href="/search-buddies">Search</Link>
@@ -110,6 +110,44 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <footer className="bg-[#202430] px-12 pt-8 min-h-[30vh]">
+        <div className="flex items-start justify-between">
+          <div>
+            <div className="flex gap-3">
+              <Image src="/assets/logo.svg" alt="logo" width={32} height={32} />
+              <MediumText className="text-2xl text-white">
+                Project Buddy
+              </MediumText>
+            </div>
+            <RegularText className="text-[#D6DDEB] mt-5 w-[70%]">
+              Great platform for students and working professionals to pair up
+              for a project.
+            </RegularText>
+          </div>
+          <div>
+            <RegularText className="text-lg text-white text-right">
+              Resources
+            </RegularText>
+            <nav className="mt-3">
+              <ul className="flex flex-col gap-2">
+                <li className="text-[#D6DDEB] hover:text-white text-right">
+                  <Link href="/login">Login</Link>
+                </li>
+                <li className="text-[#D6DDEB] hover:text-white text-right">
+                  <Link href="/signup">Sign Up</Link>
+                </li>
+                <li className="text-[#D6DDEB] hover:text-white text-right">
+                  <Link href="/login">Featured Buddies</Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <hr className="border-t-1 border-secondary my-5" />
+        <RegularText className="text-center text-white">
+          Made with ❤️
+        </RegularText>
+      </footer>
     </>
   );
 }
