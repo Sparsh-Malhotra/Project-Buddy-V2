@@ -12,13 +12,13 @@ const loginFormSchema = z.object({
 
 const signupFormSchema = z.object({
   name: z.string().nonempty({
-    message: "Name cannot be empty",
+    message: "Name is required",
   }),
   email: z.string().email({
     message: "Please enter a valid email address",
   }),
   password: z.string().nonempty({
-    message: "Password cannot be empty",
+    message: "Password is required",
   }),
 });
 

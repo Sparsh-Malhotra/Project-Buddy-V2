@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { MediumText, RegularText } from "@/core/Typography";
-import { signupFormSchema } from "@/schema";
+import { signupFormSchema } from "@/models";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,7 +28,7 @@ export default function Signup() {
   });
 
   const {
-    formState: { isValid },
+    formState: { errors },
   } = form;
 
   const handleSubmit = (values: z.infer<typeof signupFormSchema>) => {
@@ -57,7 +57,13 @@ export default function Signup() {
               <FormItem>
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your full name" {...field} />
+                  <Input
+                    placeholder="Enter your full name"
+                    className={`${
+                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                    }`}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -70,7 +76,13 @@ export default function Signup() {
               <FormItem>
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter email address" {...field} />
+                  <Input
+                    placeholder="Enter email address"
+                    className={`${
+                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                    }`}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,15 +95,19 @@ export default function Signup() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter password" {...field} />
+                  <Input
+                    placeholder="Enter password"
+                    className={`${
+                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                    }`}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={!isValid}>
-            Continue
-          </Button>
+          <Button type="submit">Continue</Button>
         </form>
       </Form>
       <div className="flex items-center self-start gap-1">

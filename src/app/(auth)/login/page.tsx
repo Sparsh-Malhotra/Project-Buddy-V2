@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { MediumText, RegularText } from "@/core/Typography";
-import { loginFormSchema } from "@/schema";
+import { loginFormSchema } from "@/models";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +29,7 @@ export default function Login() {
   });
 
   const {
-    formState: { isValid },
+    formState: { errors },
   } = form;
 
   const handleSubmit = (values: z.infer<typeof loginFormSchema>) => {
@@ -58,7 +58,13 @@ export default function Login() {
               <FormItem>
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter email address" {...field} />
+                  <Input
+                    placeholder="Enter email address"
+                    className={`${
+                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                    }`}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -71,7 +77,13 @@ export default function Login() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter password" {...field} />
+                  <Input
+                    placeholder="Enter password"
+                    className={`${
+                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                    }`}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -94,9 +106,7 @@ export default function Login() {
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={!isValid}>
-            Login
-          </Button>
+          <Button type="submit">Login</Button>
         </form>
       </Form>
       <div className="flex items-center self-start gap-1">
