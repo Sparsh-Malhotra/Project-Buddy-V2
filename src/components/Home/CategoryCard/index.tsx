@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { MediumText, RegularText } from "@/core/Typography";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { MediumText, RegularText } from '@/core/Typography'
+import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 
 interface ICategoryCard {
-  icon: string;
-  title: string;
-  count: number;
+  icon: string
+  title: string
+  count: number
 }
 
 const CategoryCard = ({ icon, title, count }: ICategoryCard) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    e.preventDefault();
-    if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault()
+    if (e.key === 'Enter' || e.key === ' ') {
       //TODO:Replicate onClick behavior
     }
-  };
+  }
 
   return (
     <div
@@ -42,7 +42,7 @@ const CategoryCard = ({ icon, title, count }: ICategoryCard) => {
         <ArrowRight width={24} height={24} className="group-hover:text-white" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryCard;
+export default CategoryCard

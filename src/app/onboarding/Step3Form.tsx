@@ -1,7 +1,7 @@
-import { step3Schema } from "@/models";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { step3Schema } from '@/models'
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
 import {
   Form,
   FormControl,
@@ -9,19 +9,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/form'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select'
 
 interface IStep3Form {
-  onSubmit: (values: z.infer<typeof step3Schema>) => void;
+  onSubmit: (values: z.infer<typeof step3Schema>) => void
 }
 
 export default function Step3Form({ onSubmit }: IStep3Form) {
@@ -29,13 +29,13 @@ export default function Step3Form({ onSubmit }: IStep3Form) {
     resolver: zodResolver(step3Schema),
     defaultValues: {
       type: undefined,
-      about: "",
+      about: '',
     },
-  });
+  })
 
   const {
     formState: { errors },
-  } = form;
+  } = form
 
   return (
     <Form {...form}>
@@ -53,10 +53,13 @@ export default function Step3Form({ onSubmit }: IStep3Form) {
                 <FormControl>
                   <SelectTrigger
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                   >
-                    <SelectValue placeholder="Select" className="placeholder:text-secondary" />
+                    <SelectValue
+                      placeholder="Select"
+                      className="placeholder:text-secondary"
+                    />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -86,5 +89,5 @@ export default function Step3Form({ onSubmit }: IStep3Form) {
         </Button>
       </form>
     </Form>
-  );
+  )
 }

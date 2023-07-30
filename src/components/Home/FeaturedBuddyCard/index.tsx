@@ -1,18 +1,17 @@
-import { MediumText, RegularText } from "@/core/Typography";
-import Image from "next/image";
+import { MediumText, RegularText } from '@/core/Typography'
+import Image from 'next/image'
 
 interface IFeaturedBuddyCard {
-  profileIcon: string;
-  name: string;
-  location: string;
-  techStacks?: string[];
+  profileIcon: string
+  name: string
+  location: string
+  techStacks?: string[]
 }
 
 const FeaturedBuddyCard = ({
   profileIcon,
   name,
-  location,
-  techStacks,
+  location, // techStacks,
 }: IFeaturedBuddyCard) => (
   <div className="rounded-sm border border-primary p-4 flex flex-col gap-1">
     <Image
@@ -25,6 +24,6 @@ const FeaturedBuddyCard = ({
     <MediumText>{name}</MediumText>
     <RegularText className="text-md text-secondary">{location}</RegularText>
   </div>
-);
+)
 
-export default FeaturedBuddyCard;
+export default FeaturedBuddyCard

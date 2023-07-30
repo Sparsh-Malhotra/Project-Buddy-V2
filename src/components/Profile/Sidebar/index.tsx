@@ -1,19 +1,19 @@
-"use client";
+'use client'
 
-import { MediumText, RegularText } from "@/core/Typography";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { MediumText, RegularText } from '@/core/Typography'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Sidebar = () => {
-  const pathName = usePathname().split("/");
-  let browseBuddiesClass = "text-secondary",
-    myProfileClass = "text-secondary";
+  const pathName = usePathname().split('/')
+  let browseBuddiesClass = 'text-secondary',
+    myProfileClass = 'text-secondary'
 
-  if (pathName[1] === "dashboard") {
-    myProfileClass = "bg-[#E9EBFD] text-primary";
-  } else if (pathName[1] === "browse-buddies") {
-    browseBuddiesClass = "bg-[#E9EBFD] text-primary";
+  if (pathName[1] === 'dashboard') {
+    myProfileClass = 'bg-[#E9EBFD] text-primary'
+  } else if (pathName[1] === 'browse-buddies') {
+    browseBuddiesClass = 'bg-[#E9EBFD] text-primary'
   }
 
   return (
@@ -28,7 +28,7 @@ const Sidebar = () => {
             <li
               className={`flex items-center gap-2 py-2 px-1 ${browseBuddiesClass}`}
             >
-              {pathName[1] === "browse-buddies" && (
+              {pathName[1] === 'browse-buddies' && (
                 <div className="bg-primary w-1 h-10 absolute left-0" />
               )}
               <Image
@@ -37,16 +37,14 @@ const Sidebar = () => {
                 width={24}
                 height={24}
               />
-              <RegularText>
-                Browse Buddies
-              </RegularText>
+              <RegularText>Browse Buddies</RegularText>
             </li>
           </Link>
           <Link href="/dashboard">
             <li
               className={`flex items-center gap-2 mt-2 py-2 px-1 ${myProfileClass}`}
             >
-              {pathName[1] === "dashboard" && (
+              {pathName[1] === 'dashboard' && (
                 <div className="bg-primary w-1 h-10 absolute left-0" />
               )}
               <Image
@@ -66,7 +64,7 @@ const Sidebar = () => {
         className="absolute right-0 bottom-0"
       />
     </section>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

@@ -1,11 +1,11 @@
-import CategoryCard from "@/components/Home/CategoryCard";
-import FeaturedBuddyCard from "@/components/Home/FeaturedBuddyCard";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { BoldText, MediumText, RegularText } from "@/core/Typography";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import CategoryCard from '@/components/Home/CategoryCard'
+import FeaturedBuddyCard from '@/components/Home/FeaturedBuddyCard'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { BoldText, MediumText, RegularText } from '@/core/Typography'
+import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -149,5 +149,5 @@ export default function Home() {
         </RegularText>
       </footer>
     </>
-  );
+  )
 }

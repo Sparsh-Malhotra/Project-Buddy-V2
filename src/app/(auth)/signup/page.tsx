@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { Input } from "@/components/ui/input";
-import { MediumText, RegularText } from "@/core/Typography";
-import { signupFormSchema } from "@/models";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from '@/components/ui/input'
+import { MediumText, RegularText } from '@/core/Typography'
+import { signupFormSchema } from '@/models'
+import * as z from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
   FormControl,
@@ -13,27 +13,27 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+} from '@/components/ui/form'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Signup() {
   const form = useForm<z.infer<typeof signupFormSchema>>({
     resolver: zodResolver(signupFormSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
+      name: '',
+      email: '',
+      password: '',
     },
-  });
+  })
 
   const {
     formState: { errors },
-  } = form;
+  } = form
 
   const handleSubmit = (values: z.infer<typeof signupFormSchema>) => {
-    console.log(values);
-  };
+    console.log(values)
+  }
 
   return (
     <div className="flex flex-col items-center justify-center gap-3 h-full w-fit m-auto">
@@ -60,7 +60,7 @@ export default function Signup() {
                   <Input
                     placeholder="Enter your full name"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -79,7 +79,7 @@ export default function Signup() {
                   <Input
                     placeholder="Enter email address"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -98,7 +98,7 @@ export default function Signup() {
                   <Input
                     placeholder="Enter password"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -119,5 +119,5 @@ export default function Signup() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

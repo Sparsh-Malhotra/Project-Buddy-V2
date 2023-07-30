@@ -1,15 +1,15 @@
-import { useCallbackRef } from "./useCallbackRef";
-import React, { useCallback, useState, useId } from "react";
+import { useCallbackRef } from './useCallbackRef'
+import React, { useCallback, useState, useId } from 'react'
 
 export interface UseDisclosureProps {
-  isOpen?: boolean;
-  defaultIsOpen?: boolean;
-  onClose?(): void;
-  onOpen?(): void;
-  id?: string;
+  isOpen?: boolean
+  defaultIsOpen?: boolean
+  onClose?(): void
+  onOpen?(): void
+  id?: string
 }
 
-type HTMLProps = React.HTMLAttributes<HTMLElement>;
+type HTMLProps = React.HTMLAttributes<HTMLElement>
 
 /**
  * `useDisclosure` is a custom hook used to help handle common open, close, or toggle scenarios.
@@ -23,52 +23,52 @@ export function useDisclosure(props: UseDisclosureProps = {}) {
     onOpen: onOpenProp,
     isOpen: isOpenProp,
     id: idProp,
-  } = props;
+  } = props
 
-  const handleOpen = useCallbackRef(onOpenProp);
-  const handleClose = useCallbackRef(onCloseProp);
+  const handleOpen = useCallbackRef(onOpenProp)
+  const handleClose = useCallbackRef(onCloseProp)
 
-  const [isOpenState, setIsOpen] = useState(props.defaultIsOpen || false);
+  const [isOpenState, setIsOpen] = useState(props.defaultIsOpen || false)
 
-  const isOpen = isOpenProp !== undefined ? isOpenProp : isOpenState;
+  const isOpen = isOpenProp !== undefined ? isOpenProp : isOpenState
 
-  const isControlled = isOpenProp !== undefined;
+  const isControlled = isOpenProp !== undefined
 
-  const uid = useId();
-  const id = idProp ?? `disclosure-${uid}`;
+  const uid = useId()
+  const id = idProp ?? `disclosure-${uid}`
 
   const onClose = useCallback(() => {
     if (!isControlled) {
-      setIsOpen(false);
+      setIsOpen(false)
     }
-    handleClose?.();
-  }, [isControlled, handleClose]);
+    handleClose?.()
+  }, [isControlled, handleClose])
 
   const onOpen = useCallback(() => {
     if (!isControlled) {
-      setIsOpen(true);
+      setIsOpen(true)
     }
-    handleOpen?.();
-  }, [isControlled, handleOpen]);
+    handleOpen?.()
+  }, [isControlled, handleOpen])
 
   const onToggle = useCallback(() => {
     if (isOpen) {
-      onClose();
+      onClose()
     } else {
-      onOpen();
+      onOpen()
     }
-  }, [isOpen, onOpen, onClose]);
+  }, [isOpen, onOpen, onClose])
 
   function getButtonProps(props: HTMLProps = {}): HTMLProps {
     return {
       ...props,
-      "aria-expanded": isOpen,
-      "aria-controls": id,
+      'aria-expanded': isOpen,
+      'aria-controls': id,
       onClick(event) {
-        props.onClick?.(event);
-        onToggle();
+        props.onClick?.(event)
+        onToggle()
       },
-    };
+    }
   }
 
   function getDisclosureProps(props: HTMLProps = {}): HTMLProps {
@@ -76,7 +76,7 @@ export function useDisclosure(props: UseDisclosureProps = {}) {
       ...props,
       hidden: !isOpen,
       id,
-    };
+    }
   }
 
   return {
@@ -87,5 +87,5 @@ export function useDisclosure(props: UseDisclosureProps = {}) {
     isControlled,
     getButtonProps,
     getDisclosureProps,
-  };
+  }
 }

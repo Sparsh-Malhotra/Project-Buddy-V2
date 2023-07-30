@@ -1,9 +1,9 @@
-import { MediumText } from "@/core/Typography";
+import { MediumText } from '@/core/Typography'
 
 export default function OnboardingLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <main className="flex h-screen">
@@ -15,5 +15,5 @@ export default function OnboardingLayout({
         </div>
       </section>
     </main>
-  );
+  )
 }

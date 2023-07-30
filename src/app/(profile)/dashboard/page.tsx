@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { BoldText } from "@/core/Typography";
-import { LogOut } from "lucide-react";
+import { Button } from '@/components/ui/button'
+import { BoldText } from '@/core/Typography'
+import { LogOut } from 'lucide-react'
 
 export default function Dashboard() {
   return (
@@ -17,5 +17,5 @@ export default function Dashboard() {
       </nav>
       <div className="flex flex-col flex-wrap"></div>
     </section>
-  );
+  )
 }

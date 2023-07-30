@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Label } from "@/components/ui/label";
-import { SelectOption } from "@/constants";
-import { RegularText } from "@/core/Typography";
-import { useDisclosure } from "@/hooks";
-import { ChevronDown, ChevronUp } from "lucide-react";
+} from '@/components/ui/collapsible'
+import { Label } from '@/components/ui/label'
+import { SelectOption } from '@/constants'
+import { RegularText } from '@/core/Typography'
+import { useDisclosure } from '@/hooks'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 interface IFilters {
-  filterTitle: string;
-  filterOptions: SelectOption<string>[];
-  defaultOpen?: boolean;
+  filterTitle: string
+  filterOptions: SelectOption<string>[]
+  defaultOpen?: boolean
 }
 
 const Filters = ({
@@ -26,12 +26,12 @@ const Filters = ({
 }: IFilters) => {
   const { isOpen, onClose, onOpen } = useDisclosure({
     defaultIsOpen: defaultOpen,
-  });
+  })
 
   const handleStateChange = (open: boolean) => {
-    if (open) onOpen();
-    else onClose();
-  };
+    if (open) onOpen()
+    else onClose()
+  }
 
   return (
     <Collapsible open={isOpen} onOpenChange={handleStateChange}>
@@ -53,7 +53,7 @@ const Filters = ({
         ))}
       </CollapsibleContent>
     </Collapsible>
-  );
-};
+  )
+}
 
-export default Filters;
+export default Filters

@@ -1,7 +1,7 @@
-import { step2Schema } from "@/models";
-import { set, useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { step2Schema } from '@/models'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
   FormControl,
@@ -9,21 +9,21 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { SkillOptions, TechStackOptions } from "@/constants";
-import MultiSelect from "@/components/ui/multi-select";
+} from '@/components/ui/select'
+import { SkillOptions, TechStackOptions } from '@/constants'
+import MultiSelect from '@/components/ui/multi-select'
 
 interface IStep2Form {
-  onSubmit: (values: z.infer<typeof step2Schema>) => void;
+  onSubmit: (values: z.infer<typeof step2Schema>) => void
 }
 
 export default function Step2Form({ onSubmit }: IStep2Form) {
@@ -32,17 +32,17 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
     defaultValues: {
       techStack: undefined,
       skills: [],
-      linkedin: "",
-      github: "",
-      dribble: "",
-      twitter: "",
+      linkedin: '',
+      github: '',
+      dribble: '',
+      twitter: '',
     },
-  });
+  })
 
   const {
     formState: { errors },
     setValue,
-  } = form;
+  } = form
 
   return (
     <Form {...form}>
@@ -64,7 +64,7 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
                   <FormControl>
                     <SelectTrigger
                       className={`${
-                        errors[field.name] ? "ring-1 ring-red-400" : ""
+                        errors[field.name] ? 'ring-1 ring-red-400' : ''
                       }`}
                     >
                       <SelectValue placeholder="Select your tech stack" />
@@ -85,13 +85,13 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
           <FormField
             control={form.control}
             name="skills"
-            render={({ field }) => (
+            render={() => (
               <FormItem className="w-[40%]">
                 <FormLabel>Skills</FormLabel>
                 <MultiSelect
                   options={SkillOptions}
                   placeholder="Select Skills"
-                  onChange={(values) => setValue("skills", values)}
+                  onChange={(values) => setValue('skills', values)}
                 />
                 <FormMessage />
               </FormItem>
@@ -107,7 +107,7 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
                   <Input
                     placeholder="Enter your LinkedIn Profile URL"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -126,7 +126,7 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
                   <Input
                     placeholder="Enter your Github Profile URL"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -145,7 +145,7 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
                   <Input
                     placeholder="Enter your Twitter Profile URL"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -164,7 +164,7 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
                   <Input
                     placeholder="Enter your Github Profile URL"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -179,5 +179,5 @@ export default function Step2Form({ onSubmit }: IStep2Form) {
         </Button>
       </form>
     </Form>
-  );
+  )
 }

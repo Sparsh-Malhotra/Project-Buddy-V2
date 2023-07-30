@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import LottiePlayer from "@/components/Common/LottiePlayer";
-import Filters from "@/components/Profile/Filters";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import MultiSelect from "@/components/ui/multi-select";
+import LottiePlayer from '@/components/Common/LottiePlayer'
+import Filters from '@/components/Profile/Filters'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import MultiSelect from '@/components/ui/multi-select'
 import {
   Select,
   SelectContent,
@@ -12,10 +12,10 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { CategoriesOptions, SkillOptions, TechStackOptions } from "@/constants";
-import { BoldText, MediumText, RegularText } from "@/core/Typography";
-import { LogOut, MapPin, Search } from "lucide-react";
+} from '@/components/ui/select'
+import { CategoriesOptions, SkillOptions, TechStackOptions } from '@/constants'
+import { BoldText, MediumText, RegularText } from '@/core/Typography'
+import { LogOut, MapPin, Search } from 'lucide-react'
 
 export default function BrowseBuddies() {
   return (
@@ -93,5 +93,5 @@ export default function BrowseBuddies() {
         </div>
       </div>
     </section>
-  );
+  )
 }

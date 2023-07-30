@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { Input } from "@/components/ui/input";
-import { MediumText, RegularText } from "@/core/Typography";
-import { loginFormSchema } from "@/models";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from '@/components/ui/input'
+import { MediumText, RegularText } from '@/core/Typography'
+import { loginFormSchema } from '@/models'
+import * as z from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
   FormControl,
@@ -13,28 +13,28 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+} from '@/components/ui/form'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Login() {
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       rememberUser: false,
     },
-  });
+  })
 
   const {
     formState: { errors },
-  } = form;
+  } = form
 
   const handleSubmit = (values: z.infer<typeof loginFormSchema>) => {
-    console.log(values);
-  };
+    console.log(values)
+  }
 
   return (
     <div className="flex flex-col items-center justify-center gap-3 h-full w-fit m-auto">
@@ -61,7 +61,7 @@ export default function Login() {
                   <Input
                     placeholder="Enter email address"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -80,7 +80,7 @@ export default function Login() {
                   <Input
                     placeholder="Enter password"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -118,5 +118,5 @@ export default function Login() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import { BoldText } from "@/core/Typography";
-import Image from "next/image";
+import { BoldText } from '@/core/Typography'
+import Image from 'next/image'
 
 export default function AuthLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <main className="flex h-screen">
@@ -27,5 +27,5 @@ export default function AuthLayout({
       </aside>
       <section className="flex-[1.4]">{children}</section>
     </main>
-  );
+  )
 }

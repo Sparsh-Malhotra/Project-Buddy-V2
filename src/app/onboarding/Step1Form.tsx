@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -8,41 +8,41 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { step1Schema } from "@/models";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+} from '@/components/ui/select'
+import { step1Schema } from '@/models'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
 
 interface IStep1Form {
-  onSubmit: (values: z.infer<typeof step1Schema>) => void;
+  onSubmit: (values: z.infer<typeof step1Schema>) => void
 }
 
 export default function Step1form({ onSubmit }: IStep1Form) {
   const form = useForm<z.infer<typeof step1Schema>>({
     resolver: zodResolver(step1Schema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      age: "",
+      firstName: '',
+      lastName: '',
+      age: '',
       gender: undefined,
-      university: "",
-      course: "",
+      university: '',
+      course: '',
       state: undefined,
     },
-  });
+  })
 
   const {
     formState: { errors },
-  } = form;
+  } = form
 
   return (
     <Form {...form}>
@@ -61,7 +61,7 @@ export default function Step1form({ onSubmit }: IStep1Form) {
                   <Input
                     placeholder="Enter your first name"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -80,7 +80,7 @@ export default function Step1form({ onSubmit }: IStep1Form) {
                   <Input
                     placeholder="Enter your last name"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -99,7 +99,7 @@ export default function Step1form({ onSubmit }: IStep1Form) {
                   <Input
                     placeholder="Enter your age"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -121,7 +121,7 @@ export default function Step1form({ onSubmit }: IStep1Form) {
                   <FormControl>
                     <SelectTrigger
                       className={`${
-                        errors[field.name] ? "ring-1 ring-red-400" : ""
+                        errors[field.name] ? 'ring-1 ring-red-400' : ''
                       }`}
                     >
                       <SelectValue placeholder="Select your gender" />
@@ -149,7 +149,7 @@ export default function Step1form({ onSubmit }: IStep1Form) {
                   <Input
                     placeholder="Enter your university"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -168,7 +168,7 @@ export default function Step1form({ onSubmit }: IStep1Form) {
                   <Input
                     placeholder="Enter your course"
                     className={`${
-                      errors[field.name] ? "ring-1 ring-red-400" : ""
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
                   />
@@ -190,7 +190,7 @@ export default function Step1form({ onSubmit }: IStep1Form) {
                   <FormControl>
                     <SelectTrigger
                       className={`${
-                        errors[field.name] ? "ring-1 ring-red-400" : ""
+                        errors[field.name] ? 'ring-1 ring-red-400' : ''
                       }`}
                     >
                       <SelectValue placeholder="Select your state" />
@@ -214,5 +214,5 @@ export default function Step1form({ onSubmit }: IStep1Form) {
         </Button>
       </form>
     </Form>
-  );
+  )
 }
