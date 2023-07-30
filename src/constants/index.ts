@@ -52,3 +52,14 @@ export const SkillOptions: SelectOption<string>[] = [
     value: "C#",
   },
 ];
+
+export const CategoriesOptions: SelectOption<string>[] = [
+  {
+    value: "student",
+    label: "Student",
+  },
+  {
+    value: "professional",
+    label: "Professional",
+  },
+];

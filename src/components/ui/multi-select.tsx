@@ -12,12 +12,16 @@ interface IMultiSelect {
   options: SelectOption<string>[];
   placeholder: string;
   onChange: (values: [string, ...string[]]) => void;
+  dir?: "top" | "bottom";
+  className?: string;
 }
 
 export default function MultiSelect({
   options,
   placeholder,
   onChange,
+  dir = "bottom",
+  className,
 }: IMultiSelect) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
@@ -67,7 +71,9 @@ export default function MultiSelect({
       onKeyDown={handleKeyDown}
       className="overflow-visible bg-transparent"
     >
-      <div className="group border border-input px-3 py-2 text-sm ring-offset-background rounded-md focus-within:ring-1 focus-within:ring-ring">
+      <div
+        className={`group border border-input px-3 py-2 text-sm ring-offset-background rounded-md focus-within:ring-1 focus-within:ring-ring ${className}`}
+      >
         <div className="flex gap-1 flex-wrap">
           {selected.map((option) => {
             return (
@@ -105,7 +111,11 @@ export default function MultiSelect({
       </div>
       <div className="relative">
         {open && selectables.length > 0 ? (
-          <div className="absolute w-full z-10 top-0 rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in overflow-y-auto max-h-[200px]">
+          <div
+            className={`absolute w-full z-10 ${
+              dir === "top" ? "bottom-10" : "top-0"
+            } rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in overflow-y-auto max-h-[200px]`}
+          >
             <CommandGroup className="h-full overflow-auto">
               {selectables.map((option) => {
                 return (
