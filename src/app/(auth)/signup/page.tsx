@@ -23,6 +23,7 @@ export default function Signup() {
     defaultValues: {
       name: '',
       email: '',
+      username: '',
       password: '',
     },
   })
@@ -78,6 +79,25 @@ export default function Signup() {
                 <FormControl>
                   <Input
                     placeholder="Enter email address"
+                    className={`${
+                      errors[field.name] ? 'ring-1 ring-red-400' : ''
+                    }`}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter username"
                     className={`${
                       errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}

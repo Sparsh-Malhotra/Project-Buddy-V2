@@ -22,7 +22,7 @@ export default function Login() {
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      email: '',
+      username: '',
       password: '',
       rememberUser: false,
     },
@@ -53,13 +53,13 @@ export default function Login() {
         >
           <FormField
             control={form.control}
-            name="email"
+            name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel>Username</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter email address"
+                    placeholder="Enter username"
                     className={`${
                       errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}

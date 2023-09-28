@@ -26,7 +26,7 @@ interface IStep1Form {
   onSubmit: (values: z.infer<typeof step1Schema>) => void
 }
 
-export default function Step1form({ onSubmit }: IStep1Form) {
+export default function Step1Form({ onSubmit }: IStep1Form) {
   const form = useForm<z.infer<typeof step1Schema>>({
     resolver: zodResolver(step1Schema),
     defaultValues: {

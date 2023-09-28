@@ -1,13 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import Step1form from './Step1Form'
+import { Step, StepConfig, Steps } from '@/components/ui/stepper'
+import Step1Form from './Step1Form'
 import Step2Form from './Step2Form'
 import Step3Form from './Step3Form'
 import { IOnboardingData } from '@/models'
+import { useStepper } from '@/hooks'
+
+const steps = [
+  { label: 'Personal Details' },
+  { label: 'Social Details' },
+  { label: 'About me' },
+] satisfies StepConfig[]
 
 export default function Onboarding() {
-  const [currentStep, setCurrentStep] = useState<number>(1)
   const [onboardingData, setOnboardingData] = useState<IOnboardingData>({
     firstName: '',
     lastName: '',
@@ -26,9 +33,30 @@ export default function Onboarding() {
     about: '',
   })
 
+  const { nextStep, setStep, activeStep, isLastStep } = useStepper({
+    initialStep: 0,
+    steps,
+  })
+
+  const renderForm = (index: number) => {
+    switch (index) {
+      case 0:
+        return <Step1Form onSubmit={handleSubmit} />
+      case 1:
+        return <Step2Form onSubmit={handleSubmit} />
+      case 2:
+        return <Step3Form onSubmit={handleSubmit} />
+    }
+  }
+
+  const handleStepClick = (step: number) => {
+    if (step >= activeStep) return null
+    else setStep(step)
+  }
+
   const handleSubmit = (values: IOnboardingData) => {
-    if (currentStep < 3) {
-      setCurrentStep((prev) => prev + 1)
+    if (!isLastStep) {
+      nextStep()
       setOnboardingData((prev) => ({ ...prev, ...values }))
     }
     const body = { ...onboardingData, ...values }
@@ -36,11 +64,14 @@ export default function Onboarding() {
   }
 
   return (
-    <>
-      <p>Stepper Component Here</p>
-      {currentStep === 1 && <Step1form onSubmit={handleSubmit} />}
-      {currentStep === 2 && <Step2Form onSubmit={handleSubmit} />}
-      {currentStep === 3 && <Step3Form onSubmit={handleSubmit} />}
-    </>
+    <div className="mt-4 w-full">
+      <Steps activeStep={activeStep} onClickStep={handleStepClick}>
+        {steps.map((step, index) => (
+          <Step index={index} key={index} {...step}>
+            {renderForm(index)}
+          </Step>
+        ))}
+      </Steps>
+    </div>
   )
 }

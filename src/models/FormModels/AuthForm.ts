@@ -1,8 +1,8 @@
 import * as z from 'zod'
 
 const loginFormSchema = z.object({
-  email: z.string().email({
-    message: 'Please enter a valid email address',
+  username: z.string().nonempty({
+    message: 'Please enter your username',
   }),
   password: z.string().nonempty({
     message: 'Please enter your password',
@@ -16,6 +16,9 @@ const signupFormSchema = z.object({
   }),
   email: z.string().email({
     message: 'Please enter a valid email address',
+  }),
+  username: z.string().nonempty({
+    message: 'Please enter your username',
   }),
   password: z.string().nonempty({
     message: 'Password is required',
