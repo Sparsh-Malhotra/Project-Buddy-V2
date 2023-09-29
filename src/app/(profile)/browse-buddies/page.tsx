@@ -20,7 +20,7 @@ import { LogOut, MapPin, Search } from 'lucide-react'
 export default function BrowseBuddies() {
   return (
     <section className="flex flex-col w-[81vw] h-full">
-      <nav className="flex items-center justify-between border-b border-b-borderColor px-5 py-4">
+      <nav className="flex items-center justify-between border-b border-b-borderColor px-5 py-3">
         <BoldText className="text-[1.8rem]">Find Buddies</BoldText>
         <Button
           variant="outline"
@@ -60,15 +60,15 @@ export default function BrowseBuddies() {
           <Button className="w-[20%]">Search</Button>
         </div>
       </div>
-      <div className="flex items-center gap-1 px-4 py-4">
-        <div className="flex-1 flex flex-col gap-3">
+      <div className="flex items-start gap-1 px-4 py-4">
+        <div className="flex-1 flex flex-col items-start gap-3">
           <Filters
             defaultOpen
             filterTitle="Tech Stack"
             filterOptions={TechStackOptions}
           />
           <Filters filterTitle="Categories" filterOptions={CategoriesOptions} />
-          <RegularText className="text-base">Skills</RegularText>
+          <MediumText className="text-base">Skills</MediumText>
           <MultiSelect
             options={SkillOptions}
             placeholder="Select Skills"

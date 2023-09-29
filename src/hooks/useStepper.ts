@@ -21,6 +21,11 @@ type useStepperReturn = {
   isOptionalStep: boolean | undefined
 }
 
+/**
+ * `useStepper` is a custom hook for managing a stepper with a dynamic number of steps.
+ *
+ */
+
 export function useStepper({
   initialStep,
   steps,
@@ -68,7 +73,7 @@ interface UseMediaQueryOptions {
 type MediaQueryCallback = (event: { matches: boolean; media: string }) => void
 
 /**
- * Older versions of Safari (shipped withCatalina and before) do not support addEventListener on matchMedia
+ * Older versions of Safari (shipped with Catalina and before) do not support addEventListener on matchMedia
  * https://stackoverflow.com/questions/56466261/matchmedia-addlistener-marked-as-deprecated-addeventlistener-equivalent
  * */
 function attachMediaListener(

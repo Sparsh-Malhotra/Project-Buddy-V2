@@ -63,7 +63,7 @@ export default function Home() {
                 className="border-0 border-b-2 rounded-none px-0 focus-visible:ring-0"
               />
               <Button className="px-16" asChild>
-                <Link href="/search-buddies">Search</Link>
+                <Link href="/browse-buddies">Search</Link>
               </Button>
             </div>
           </div>
