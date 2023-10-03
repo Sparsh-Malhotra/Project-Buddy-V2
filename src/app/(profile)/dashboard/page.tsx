@@ -66,11 +66,11 @@ export default function Dashboard() {
           />
           <div className="flex items-center px-4 py-2">
             <Image
-              src="https://placehold.co/120x120/"
+              src="https://placehold.co/100x100/"
               alt="avatar"
               unoptimized
-              width={110}
-              height={110}
+              width={100}
+              height={100}
               className="rounded-full"
             />
             <div className="flex flex-col ml-4">

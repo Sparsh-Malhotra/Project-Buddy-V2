@@ -42,7 +42,7 @@ export default function Signup() {
       <div className="flex items-center gap-2">
         <hr className="border-t-1 border-primary w-[120px]" />
         <RegularText className="text-gray-400 text-sm">
-          or Signup with email
+          Signup with email
         </RegularText>
         <hr className="border-t-1 border-primary w-[120px]" />
       </div>

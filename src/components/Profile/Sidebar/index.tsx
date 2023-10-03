@@ -18,10 +18,10 @@ const Sidebar = () => {
 
   return (
     <section className="flex flex-col w-[19vw] bg-[#F8F8FD] relative pt-4">
-      <div className="flex items-center gap-3 px-3">
+      <Link href="/" className="flex items-center gap-3 px-3">
         <Image src="/assets/logo.svg" alt="logo" width={32} height={32} />
         <MediumText className="text-2xl">Project Buddy</MediumText>
-      </div>
+      </Link>
       <div className="relative">
         <ul className="px-4 mt-10">
           <Link href="/browse-buddies">

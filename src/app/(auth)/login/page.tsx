@@ -42,7 +42,7 @@ export default function Login() {
       <div className="flex items-center gap-2">
         <hr className="border-t-1 border-primary w-[120px]" />
         <RegularText className="text-gray-400 text-sm">
-          or Login with email
+          Login with username
         </RegularText>
         <hr className="border-t-1 border-primary w-[120px]" />
       </div>
