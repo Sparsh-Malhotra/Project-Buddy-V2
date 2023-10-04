@@ -1,5 +1,6 @@
 import { inter } from '@/core/Fonts'
 import './globals.css'
+import NextAuthProvider from '@/context/NextAuthProvider'
 
 export const metadata = {
   title: 'Project Buddy',
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </body>
     </html>
   )
 }

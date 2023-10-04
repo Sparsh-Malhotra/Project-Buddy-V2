@@ -17,8 +17,12 @@ import {
 import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
+  const router = useRouter()
+
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -32,8 +36,16 @@ export default function Login() {
     formState: { errors },
   } = form
 
-  const handleSubmit = (values: z.infer<typeof loginFormSchema>) => {
-    console.log(values)
+  const handleSubmit = async (values: z.infer<typeof loginFormSchema>) => {
+    const res = await signIn('credentials', {
+      redirect: false,
+      ...values,
+    })
+    if (res?.error) {
+      console.log(res?.error)
+    } else {
+      router.push('/dashboard')
+    }
   }
 
   return (
@@ -42,7 +54,7 @@ export default function Login() {
       <div className="flex items-center gap-2">
         <hr className="border-t-1 border-primary w-[120px]" />
         <RegularText className="text-gray-400 text-sm">
-          Login with username
+          or Login with username
         </RegularText>
         <hr className="border-t-1 border-primary w-[120px]" />
       </div>

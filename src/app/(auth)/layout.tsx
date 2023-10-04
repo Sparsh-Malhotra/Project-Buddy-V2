@@ -1,11 +1,18 @@
 import { BoldText } from '@/core/Typography'
+import { authOptions } from '@/lib/auth'
+import { getServerSession } from 'next-auth'
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
 
-export default function AuthLayout({
+export default async function AuthLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await getServerSession(authOptions)
+
+  if (session) redirect('/dashboard')
+
   return (
     <main className="flex h-screen">
       <aside className="bg-[#F8F8FD] flex-1 relative">

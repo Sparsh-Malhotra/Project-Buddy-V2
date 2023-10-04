@@ -16,8 +16,15 @@ import {
 import { CategoriesOptions, SkillOptions, TechStackOptions } from '@/constants'
 import { BoldText, MediumText, RegularText } from '@/core/Typography'
 import { LogOut, MapPin, Search } from 'lucide-react'
+import { signOut } from 'next-auth/react'
 
 export default function BrowseBuddies() {
+  const handleLogout = () => {
+    signOut({
+      redirect: true,
+      callbackUrl: `${window.location.origin}/login`,
+    })
+  }
   return (
     <section className="flex flex-col w-[81vw] h-full">
       <nav className="flex items-center justify-between border-b border-b-borderColor px-5 py-3">
@@ -25,6 +32,7 @@ export default function BrowseBuddies() {
         <Button
           variant="outline"
           className="text-[#FF6550] gap-3 text-base hover:bg-[#ff655026] hover:text-[#FF6550] border-[#FF6550]"
+          onClick={handleLogout}
         >
           <LogOut />
           Logout

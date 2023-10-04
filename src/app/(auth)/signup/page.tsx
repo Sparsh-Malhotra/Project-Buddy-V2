@@ -16,8 +16,11 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Signup() {
+  const router = useRouter()
+
   const form = useForm<z.infer<typeof signupFormSchema>>({
     resolver: zodResolver(signupFormSchema),
     defaultValues: {
@@ -32,8 +35,20 @@ export default function Signup() {
     formState: { errors },
   } = form
 
-  const handleSubmit = (values: z.infer<typeof signupFormSchema>) => {
-    console.log(values)
+  const handleSubmit = async (values: z.infer<typeof signupFormSchema>) => {
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+
+    if (res.ok) {
+      router.push('/onboarding')
+    } else {
+      console.error('Registration failed!!')
+    }
   }
 
   return (
@@ -42,7 +57,7 @@ export default function Signup() {
       <div className="flex items-center gap-2">
         <hr className="border-t-1 border-primary w-[120px]" />
         <RegularText className="text-gray-400 text-sm">
-          Signup with email
+          or Signup with email
         </RegularText>
         <hr className="border-t-1 border-primary w-[120px]" />
       </div>
@@ -121,6 +136,7 @@ export default function Signup() {
                       errors[field.name] ? 'ring-1 ring-red-400' : ''
                     }`}
                     {...field}
+                    type="password"
                   />
                 </FormControl>
                 <FormMessage />

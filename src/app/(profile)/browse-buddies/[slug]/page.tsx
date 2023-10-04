@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { BoldText, MediumText, RegularText } from '@/core/Typography'
 import { LogOut, Mail } from 'lucide-react'
 import GitHubCalendar from 'react-github-calendar'
+import { signOut } from 'next-auth/react'
 
 type ProfileCardProps = {
   className?: string
@@ -23,6 +24,12 @@ const ProfileCard: FunctionComponent<PropsWithChildren<ProfileCardProps>> = ({
 const skillsData = ['React', 'Javascript', 'HTML', 'CSS']
 
 export default function BuddyProfile() {
+  const handleLogout = () => {
+    signOut({
+      redirect: true,
+      callbackUrl: `${window.location.origin}/login`,
+    })
+  }
   return (
     <section className="flex flex-col w-[81vw]">
       <nav className="flex items-center justify-between border-b border-b-borderColor w-full px-5 py-3">
@@ -30,6 +37,7 @@ export default function BuddyProfile() {
         <Button
           variant="outline"
           className="text-[#FF6550] gap-3 text-base hover:bg-[#ff655026] hover:text-[#FF6550] border-[#FF6550]"
+          onClick={handleLogout}
         >
           <LogOut />
           Logout
